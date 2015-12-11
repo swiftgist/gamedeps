@@ -1,0 +1,10 @@
+
+cmd:
+  find /opt -name Gunpoint -executable:
+    Gunpoint$:
+      - 'executable'
+      -
+        - 'critical'
+        - 'nonexecutable'
+      - 'Run "chmod +x,go-w Gunpoint"'
+

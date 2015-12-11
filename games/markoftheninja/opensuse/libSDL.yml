@@ -1,0 +1,10 @@
+
+cmd:
+  rpm -q libSDL-1_2-0:
+    ^libSDL-1_2-0:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libSDL-1_2-0"'
+

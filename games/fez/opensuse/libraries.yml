@@ -1,0 +1,9 @@
+
+cmd:
+  find /opt -path */lib64/libopenal.so.1 -type l:
+    libopenal.so.1$:
+      - 'symlinked'
+      -
+        - 'warning'
+        - 'FEZ version'
+      - 'Run "mv libopenal.so.1 libopenal.so.1-; ln -s /usr/lib64/libopenal.so.1.15.1 libopenal.so.1"'

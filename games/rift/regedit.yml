@@ -1,0 +1,15 @@
+
+cmd:
+  regedit -E - HKEY_CURRENT_USER:
+    ^.StrictDrawOrdering.=.enabled:
+      - 'present'
+      - 
+        - 'critical'
+        - 'missing'
+      - 'Run "gamedeps tut regedit-strictdrawordering"'
+    ^.UseGLSL.=.enabled:
+      - 'present'
+      - 
+        - 'critical'
+        - 'missing'
+      - 'Run "gamedeps tut regedit-useglsl"'

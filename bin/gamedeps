@@ -1,0 +1,256 @@
+#!/usr/bin/ruby
+
+require 'open3'
+require 'pp'
+require 'yaml'
+require 'thor'
+
+class GameDeps < Thor
+  desc "rift", "check for Rift dependencies"
+  option :custom
+  def rift
+    template("rift", options)
+  end
+
+  desc "markoftheninja", "check for Mark of the Ninja dependencies"
+  option :custom
+  def markoftheninja
+    template("markoftheninja", options)
+  end
+
+  desc "wormsreloaded", "check for Worms Reloaded dependencies"
+  option :custom
+  def wormsreloaded
+    template("wormsreloaded", options)
+  end
+
+  desc "costumequest", "check for Costume Quest dependencies"
+  option :custom
+  def costumequest
+    template("costumequest", options)
+  end
+
+  desc "anomaly2", "check for Anomaly2 dependencies"
+  option :custom
+  def anomaly2
+    template("anomaly2", options)
+  end
+
+  desc "anomalykorea", "check for Anomaly Korea dependencies"
+  option :custom
+  def anomalykorea
+    template("anomalykorea", options)
+  end
+
+  desc "beathazard", "check for BeathHazard dependencies"
+  option :custom
+  def beathazard
+    template("beathazard", options)
+  end
+
+  desc "costumequest", "check for costumequest dependencies"
+  option :custom
+  def costumequest
+    template("costumequest", options)
+  end
+
+  desc "druidsduel", "check for Druids Duel dependencies"
+  option :custom
+  def druidsduel
+    template("druidsduel", options)
+  end
+
+  desc "dynamitejack", "check for Dynamite Jack dependencies"
+  option :custom
+  def dynamitejack
+    template("dynamitejack", options)
+  end
+
+  desc "eets2", "check for Eets Munchies dependencies"
+  option :custom
+  def eets2
+    template("eets2", options)
+  end
+
+  desc "fez", "check for FEZ dependencies"
+  option :custom
+  def fez
+    template("fez", options)
+  end
+
+  desc "ftl", "check for Faster Than Light dependencies"
+  option :custom
+  def ftl
+    template("ftl", options)
+  end
+
+  desc "greedcorp", "check for Greedcorp dependencies"
+  option :custom
+  def greedcorp
+    template("greedcorp", options)
+  end
+
+  desc "gunpoint", "check for Gunpoint dependencies"
+  option :custom
+  def gunpoint
+    template("gunpoint", options)
+  end
+
+  desc "limbo", "check for Limbo dependencies"
+  option :custom
+  def limbo
+    template("limbo", options)
+  end
+
+  desc "nightsky", "check for Night Sky dependencies"
+  option :custom
+  def nightsky
+    template("nightsky", options)
+  end
+
+  desc "rocketbirds", "check for Rocketbirds dependencies"
+  option :custom
+  def rocketbirds
+    template("rocketbirds", options)
+  end
+
+  desc "solar2", "check for Solar2 dependencies"
+  option :custom
+  def solar2
+    template("solar2", options)
+  end
+
+
+
+
+  no_commands do
+    def template(game, options)
+      game = Game.new(game, options[:custom])
+      game.load_all
+      game.checks.keys.sort.each do |name|
+        puts set_color "#{name}:", :bold, :blue
+        game.check(name).each do |result|
+          rc, regex, msg, help = result
+          label = regex.gsub(/[$^=]/, '').gsub(/((?=\.\D)\.)/, '')
+          case rc
+          when 'success'
+            printf "%-28s ", label  
+            puts set_color "#{msg}", :bold, :green    
+          when 'warning'
+            color_msg = set_color "#{msg}", :bold, :yellow    
+            printf "%-28s %15s     %s\n", label, color_msg, help
+          when 'critical'
+            color_msg = set_color "#{msg}", :bold, :red    
+            printf "%-28s %15s     %s\n", label, color_msg, help
+          end
+        end
+      end
+    end
+  end
+
+end
+
+
+class Game
+  attr_accessor :checks
+
+  def initialize(game, custom=nil)
+    @game = game
+    @checks = {}
+    @distro = nil
+    @version = nil
+    @custom = custom
+    os_release
+  end
+
+  def os_release
+    begin
+      File.open("/etc/os-release") do |f|
+        f.each_line do |line|
+          case line
+          when /^ID=(.*)/
+            @distro = $1
+          when /VERSION_ID="(.*)"/
+            @version = $1
+          end
+        end
+      end
+    rescue
+      puts "/etc/os-release is missing"
+    end
+  end
+
+  def load_all
+    dir = File.dirname(Dir.pwd) + "/games/#{@game}"
+    files = Dir.glob("#{dir}/*.yml") 
+    files += Dir.glob("#{dir}/#{@distro}/*.yml") unless @distro.nil?
+    files += Dir.glob("#{dir}/#{@distro}/#{@version}/*.yml") unless @version.nil?
+    files += Dir.glob("#{dir}/#{@custom}/*.yml") unless @custom.nil?
+    raise "Yaml files missing for #{@game} in #{dir}" if files.empty?
+
+    files.each do |file|
+      name = File.basename(file, ".yml")
+      @checks[name] = YAML.load_file(file)
+    end
+  end
+
+  def check(name)
+    @results = []
+    @checks[name].keys.each do |directive|
+      @checks[name][directive].keys.each do |arg|
+        text = contents(name, directive, arg)
+        scan(text, @checks[name][directive][arg])
+      end
+    end
+    @results
+  end
+
+  def contents(name, directive, arg)
+    case directive
+    when "file"
+      File.open(arg) do |f|
+        f.read
+      end
+    when "cmd"
+      #IO.popen(arg) do |p|
+      #  p.read
+      #end
+      content, status = Open3.capture2e(arg)
+      raise "#{arg} failed" unless status.exited?
+      content
+    else
+      raise "Bad directive #{directive} in #{name}"
+    end
+  end
+
+  def scan(contents, conditions)
+    case conditions
+    when Hash
+      # Run all
+      conditions.keys.each do |regex|
+        if /#{regex}/.match(contents) then
+          @results << [ 'success', regex, conditions[regex].first, conditions[regex][2] ]
+        else
+          @results << [ conditions[regex][1].first, regex, conditions[regex][1].last, conditions[regex][2]]
+        end
+      end
+    when Array
+      # XOR
+      conditions.each do |entry|
+        entry.keys.each do |regex|
+          if /#{regex}/.match(contents) then
+            @results = [ [ 'success', regex, entry[regex].first, entry[regex][2] ] ]
+            return 
+          else
+            @results << [ entry[regex][1].first, regex, entry[regex][1].last, entry[regex][2]]
+          end
+        end
+      end
+    else
+      raise "Unsupported class for conditions"
+    end
+  end
+
+end
+
+GameDeps.start(ARGV)

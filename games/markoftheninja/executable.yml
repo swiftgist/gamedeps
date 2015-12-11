@@ -1,0 +1,24 @@
+
+cmd:
+  find /opt -name ninja-bin -executable:
+    ninja-bin$:
+      - 'executable'
+      -
+        - 'critical'
+        - 'nonexecutable'
+      - 'Run "chmod +x ninja-bin"'
+  find /opt -name ninja-bin32 -executable:
+    ninja-bin32$:
+      - 'executable'
+      -
+        - 'critical'
+        - 'nonexecutable'
+      - 'Run "chmod +x ninja-bin32"'
+  find /opt -name ninja-bin64 -executable:
+    ninja-bin64$:
+      - 'executable'
+      -
+        - 'critical'
+        - 'nonexecutable'
+      - 'Run "chmod +x ninja-bin64"'
+

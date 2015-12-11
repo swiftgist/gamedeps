@@ -1,0 +1,31 @@
+
+cmd:
+  rpm -q Mesa-libGL1-32bit:
+    ^Mesa-libGL1-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in Mesa-libGL1-32bit"'
+  rpm -q libX11-6-32bit:
+    ^libX11-6-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libX11-6-32bit"'
+  rpm -q libGLU1-32bit:
+    ^libGLU1-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libGLU1-32bit"'
+  rpm -q alsa-plugins-pulse-32bit:
+    ^alsa-plugins-pulse-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in alsa-plugins-pulse-32bit"'
+

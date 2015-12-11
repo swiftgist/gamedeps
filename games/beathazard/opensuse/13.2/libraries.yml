@@ -1,0 +1,30 @@
+
+cmd:
+  rpm -q libgtk-2_0-0-32bit:
+    ^libgtk-2_0-0-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libgtk-2_0-0-32bit"'
+  rpm -q libXinerama1-32bit:
+    ^libXinerama1-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libXinerama1-32bit"'
+  rpm -q libXcursor1-32bit:
+    ^libXcursor1-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libXcursor1-32bit"'
+  rpm -q libX11-6-32bit:
+    ^libX11-6-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libX11-6-32bit"'

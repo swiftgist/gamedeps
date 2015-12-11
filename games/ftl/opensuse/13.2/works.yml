@@ -1,0 +1,10 @@
+
+cmd:
+  echo FTL:
+    ^FTL:
+      - 'no dependencies'
+      -
+        - 'critical'
+        - 'nothing'
+      - 'It just works'
+

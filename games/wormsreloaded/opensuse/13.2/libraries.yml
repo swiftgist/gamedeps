@@ -1,0 +1,24 @@
+
+cmd:
+  rpm -q Mesa-libGL1-32bit:
+    ^Mesa-libGL1-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in Mesa-libGL1-32bit"'
+  rpm -q libudev1-32bit:
+    ^libudev1-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libudev1-32bit"'
+  rpm -q libpulse0-32bit:
+    ^libpulse0-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libpulse0-32bit"'
+

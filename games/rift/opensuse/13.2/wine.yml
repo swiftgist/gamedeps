@@ -1,0 +1,10 @@
+
+cmd:
+  rpm -q wine-1.8~rc1:
+    ^wine-1.8~rc1:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "gamedeps tut wine-1.8~rc1"'
+

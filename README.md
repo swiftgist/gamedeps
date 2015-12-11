@@ -64,7 +64,7 @@ xact_jun2010                 installed
 
 ## Wiki
 
-See [Wiki](https://github.com/swiftgist/gamedeps/wiki) for more information.
+See the [Wiki](https://github.com/swiftgist/gamedeps/wiki) for more information.
 
 
 

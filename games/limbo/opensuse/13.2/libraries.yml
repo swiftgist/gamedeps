@@ -1,0 +1,66 @@
+
+cmd:
+  rpm -q libICE6-32bit:
+    ^libICE6-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libICE6-32bit"'
+  rpm -q libSM6-32bit:
+    ^libSM6-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libSM6-32bit"'
+  rpm -q libasound2-32bit:
+    ^libasound2-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libasound2-32bit"'
+  rpm -q Mesa-libGL1-32bit:
+    ^Mesa-libGL1-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in Mesa-libGL1-32bit"'
+  rpm -q libX11-6-32bit:
+    ^libX11-6-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libX11-6-32bit"'
+  rpm -q libXi6-32bit:
+    ^libXi6-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libXi6-32bit"'
+  rpm -q libXext6-32bit:
+    ^libXext6-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libXext6-32bit"'
+  rpm -q libXrandr2-32bit:
+    ^libXrandr2-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libXrandr2-32bit"'
+  rpm -q libfreetype6-32bit:
+    ^libfreetype6-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libfreetype6-32bit"'
+

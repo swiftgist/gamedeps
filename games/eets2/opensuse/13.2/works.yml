@@ -1,0 +1,10 @@
+
+cmd:
+  echo eets2:
+    ^eets2:
+      - 'no dependencies'
+      -
+        - 'critical'
+        - 'nothing'
+      - 'It just works'
+

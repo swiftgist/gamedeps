@@ -1,0 +1,87 @@
+
+cmd:
+  winetricks dlls list-installed:
+    ^d3dx9_26$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks d3dx9_26"'
+    ^d3dx9_28$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks d3dx9_28"'
+    ^d3dx9_31$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks d3dx9_31"'
+    ^d3dx9_35$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks d3dx9_35"'
+    ^d3dx9_36$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks d3dx9_36"'
+    ^d3dx9_39$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks d3dx9_39"'
+    ^d3dx9_42$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks d3dx9_42"'
+    ^d3dx9_43$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks d3dx9_43"'
+    ^d3dx9$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks d3dx9"'
+    ^d3dcompiler_43$:
+      - 'installed'
+      -
+        - 'warning'
+        - 'missing'
+      - 'Run "winetricks d3dcompiler_43"'
+    ^vcrun2008$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks vcrun2008"'
+    ^vcrun2012$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks vcrun2012"'
+    ^vcrun2013$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks vcrun2013"'
+    ^xact_jun2010$:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "winetricks xact_jun2010"'

@@ -1,0 +1,17 @@
+
+file:
+  /etc/pulse/daemon.conf:
+    ^default-fragments:
+      - 'changed'
+      -
+        - 'warning'
+        - 'default'
+      - 'Run "gamedeps tut pulse-rift"'
+    ^default-fragment-size-msec:
+      - 'changed'
+      -
+        - 'warning'
+        - 'default'
+      - 'Run "gamedeps tut pulse-rift"'
+
+

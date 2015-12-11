@@ -1,0 +1,24 @@
+
+cmd:
+  rpm -q Mesa-libGL1-32bit:
+    ^Mesa-libGL1-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in Mesa-libGL1-32bit"'
+  rpm -q libSDL-1_2-0-32bit:
+    ^libSDL-1_2-0-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libSDL-1_2-0-32bit"'
+  rpm -q libSDL_mixer-1_2-0-32bit:
+    ^libSDL_mixer-1_2-0-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libSDL_mixer-1_2-0-32bit"'
+

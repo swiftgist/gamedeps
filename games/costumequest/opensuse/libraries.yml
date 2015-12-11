@@ -1,0 +1,24 @@
+
+cmd:
+  rpm -q libXau6-32bit:
+    ^libXau6-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libXau6-32bit"'
+  rpm -q libxcb1-32bit:
+    ^libxcb1-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libxcb1-32bit"'
+  rpm -q libXext6-32bit:
+    ^libXext6-32bit:
+      - 'installed'
+      -
+        - 'critical'
+        - 'missing'
+      - 'Run "zypper in libXext6-32bit"'
+

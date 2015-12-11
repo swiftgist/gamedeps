@@ -1,0 +1,16 @@
+
+cmd:
+  rpm -q nvidia-gfxG04-kmp-default-352.55_k4.1.12_1-17.5:
+    ^nvidia-gfxG04-kmp-default:
+      - 'installed'
+      -
+        - 'warning'
+        - 'missing'
+      - 'Run "gamedeps tut nvidia"'
+  lsmod:
+    ^nvidia:
+      - 'present'
+      - 
+        - 'critical'
+        - 'missing'
+      - 'Run "gamedeps tut nvidia"'

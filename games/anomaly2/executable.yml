@@ -1,0 +1,10 @@
+
+cmd:
+  find /opt -name Anomaly2 -executable:
+    Anomaly2$:
+      - 'executable'
+      -
+        - 'critical'
+        - 'nonexecutable'
+      - 'Run "chmod +x Anomaly2"'
+
